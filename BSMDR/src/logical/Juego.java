@@ -1,14 +1,12 @@
 package logical;
 
-import java.util.Calendar;
-
 public class Juego {
 	private String estadio;
 	private Equipo local;
 	private Equipo visitante; 
-	private Calendar fecha;
-	private  Marcador marcador;
-	public Juego(String estadio, Equipo local, Equipo visitante, Calendar fecha, Marcador marcador) {
+	private FechaSimple fecha;
+	private Marcador marcador;
+	public Juego(String estadio, Equipo local, Equipo visitante, FechaSimple fecha, Marcador marcador) {
 		super();
 		this.estadio = estadio;
 		this.local = local;
@@ -34,10 +32,10 @@ public class Juego {
 	public void setVisitante(Equipo visitante) {
 		this.visitante = visitante;
 	}
-	public Calendar getFecha() {
+	public FechaSimple getFecha() {
 		return fecha;
 	}
-	public void setFecha(Calendar fecha) {
+	public void setFecha(FechaSimple fecha) {
 		this.fecha = fecha;
 	}
 	public Marcador getMarcador() {
