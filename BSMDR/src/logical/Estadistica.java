@@ -45,13 +45,15 @@ public class Estadistica {
 	public void setPuntosDeCampo(int puntosDeCampo) {
 		this.puntosDeCampo = puntosDeCampo;
 	}
-	public int getPuntoDeTres() {
+	
+	public int getPuntosDeTres() {
 		return puntosDeTres;
 	}
-	public void setPuntoDeTres(int puntoDeTres) {
-		this.puntosDeTres = puntoDeTres;
+
+	public void setPuntosDeTres(int puntosDeTres) {
+		this.puntosDeTres = puntosDeTres;
 	}
-	
+
 	public int getTotalPuntos() {
 		return totalPuntos;
 	}
