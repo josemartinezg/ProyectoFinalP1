@@ -118,33 +118,37 @@ public class Estadistica {
 	
 	//TODO Probar enviandole datos directamente al constructor.
 	public float addTiro(int anotacion, boolean encestado) {
+		float promedio = 0;
 		if (encestado == true) {
-			if (anotacion == 1) {
+			switch (anotacion) {
+			case 1:
 				intentosTirosLibres += 1;
 				tirosLibres += anotacion;
-				return (float)(intentosTirosLibres/tirosLibres);
-			}if (anotacion == 2) {
+				promedio = (float)(intentosTirosLibres/tirosLibres);
+			case 2:
 				intentosDeCampo += 1;
 				puntosDeCampo += anotacion;
-				return (float)(intentosDeCampo/puntosDeCampo);
-			}if (anotacion == 3) {
+				promedio = (float)(intentosDeCampo/puntosDeCampo);
+			case 3:
 				intentosDeTres += 1;
 				puntosDeTres += anotacion;
-				return (float)(intentosDeTres/puntosDeTres);
+				promedio = (float)(intentosDeTres/puntosDeTres);
 			}
+
 		}else {
-			if (anotacion == 1) {
+			switch (anotacion) {
+			case 1:
 				intentosTirosLibres += 1;
-				return (float)(intentosTirosLibres/tirosLibres);
-			}if (anotacion == 2) {
+				promedio = (float)(intentosTirosLibres/tirosLibres);
+			case 2:
 				intentosDeCampo += 1;
-				return (float)(intentosTirosLibres/tirosLibres);
-			}if (anotacion == 3) {
+				promedio = (float)(intentosTirosLibres/tirosLibres);
+			case 3:
 				intentosDeTres += 1;
-				return (float)(intentosTirosLibres/tirosLibres);
+				promedio = (float)(intentosTirosLibres/tirosLibres);
 			}
 		}
-		return 0;
+		return promedio;
 	}
 	
 	//Determinar si estos métodos son necesarios en esta clase...
