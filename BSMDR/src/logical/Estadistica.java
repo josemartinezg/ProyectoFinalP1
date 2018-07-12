@@ -1,30 +1,44 @@
 package logical;
 
 public class Estadistica {
+	private int tirosLibres;
 	private int puntosDeCampo;
-	private int puntoDeTres;
+	private int puntosDeTres;
+	private int totalPuntos;
 	private int asistencias;
 	private int rebotes;
+	private int intentosTirosLibres;
 	private int intentosDeCampo;
 	private int intentosDeTres;
 	private int numeroCamiseta;
 	private float estatura;
 	private float peso;
+	//Añadir foto. 
 	
-	public Estadistica(int puntosDeCampo, int puntoDeTres, int asistencias, int rebotes, int intentosDeCampo,
-			int intentosDeTres, int numeroCamiseta, float estatura, float peso) {
+	public Estadistica(int numeroCamiseta, float estatura, float peso) {
 		super();
-		this.puntosDeCampo = puntosDeCampo;
-		this.puntoDeTres = puntoDeTres;
-		this.asistencias = asistencias;
-		this.rebotes = rebotes;
-		this.intentosDeCampo = intentosDeCampo;
-		this.intentosDeTres = intentosDeTres;
+		tirosLibres = 0;
+		puntosDeCampo = 0;
+		puntosDeTres = 0;
+		totalPuntos = 0;
+		asistencias = 0;
+		rebotes = 0;
+		intentosTirosLibres = 0;
+		intentosDeCampo = 0;
+		intentosDeTres = 0;
 		this.numeroCamiseta = numeroCamiseta;
 		this.estatura = estatura;
 		this.peso = peso;
 	}
-	
+
+	public int getTirosLibres() {
+		return tirosLibres;
+	}
+
+	public void setTirosLibres(int tirosLibres) {
+		this.tirosLibres = tirosLibres;
+	}
+
 	public int getPuntosDeCampo() {
 		return puntosDeCampo;
 	}
@@ -32,10 +46,18 @@ public class Estadistica {
 		this.puntosDeCampo = puntosDeCampo;
 	}
 	public int getPuntoDeTres() {
-		return puntoDeTres;
+		return puntosDeTres;
 	}
 	public void setPuntoDeTres(int puntoDeTres) {
-		this.puntoDeTres = puntoDeTres;
+		this.puntosDeTres = puntoDeTres;
+	}
+	
+	public int getTotalPuntos() {
+		return totalPuntos;
+	}
+
+	public void setTotalPuntos(int totalPuntos) {
+		this.totalPuntos = totalPuntos;
 	}
 	public int getAsistencias() {
 		return asistencias;
@@ -49,6 +71,14 @@ public class Estadistica {
 	public void setRebotes(int rebotes) {
 		this.rebotes = rebotes;
 	}
+	public int getIntentosTirosLibres() {
+		return intentosTirosLibres;
+	}
+
+	public void setIntentosTirosLibres(int intentosTirosLibres) {
+		this.intentosTirosLibres = intentosTirosLibres;
+	}
+
 	public int getIntentosDeCampo() {
 		return intentosDeCampo;
 	}
@@ -79,4 +109,70 @@ public class Estadistica {
 	public void setPeso(float peso) {
 		this.peso = peso;
 	}
+	/*
+	 * Llamar desde pantalla del tablero o simulación del juego.
+	 * Condicionar los action listeners de acuerdo a las teclas. Ej: Si se asigna una tecla a tiro libre...
+	 * ... "addPuntos(1, T/F)".  
+	 * Agregar estructura de control al momento de invocar la función.
+	 * */
+	
+	//TODO Probar enviandole datos directamente al constructor.
+	public float addTiro(int anotacion, boolean encestado) {
+		if (encestado == true) {
+			if (anotacion == 1) {
+				intentosTirosLibres += 1;
+				tirosLibres += anotacion;
+				return (float)(intentosTirosLibres/tirosLibres);
+			}if (anotacion == 2) {
+				intentosDeCampo += 1;
+				puntosDeCampo += anotacion;
+				return (float)(intentosDeCampo/puntosDeCampo);
+			}if (anotacion == 3) {
+				intentosDeTres += 1;
+				puntosDeTres += anotacion;
+				return (float)(intentosDeTres/puntosDeTres);
+			}
+		}else {
+			if (anotacion == 1) {
+				intentosTirosLibres += 1;
+				return (float)(intentosTirosLibres/tirosLibres);
+			}if (anotacion == 2) {
+				intentosDeCampo += 1;
+				return (float)(intentosTirosLibres/tirosLibres);
+			}if (anotacion == 3) {
+				intentosDeTres += 1;
+				return (float)(intentosTirosLibres/tirosLibres);
+			}
+		}
+		return 0;
+	}
+	
+	//Determinar si estos métodos son necesarios en esta clase...
+	/*Llamar método por teclado al momento de que se realice una asistencia.*/
+	public void addAsistencias() {
+		asistencias += 1;
+	}
+	/*Llamar método por teclado al momento de que se realice un rebote.*/
+	public void addRebotes() {
+		rebotes += 1;
+	}
+	public int puntosPorJuego(int cantJuegos) {
+		int promedio = totalPuntos/cantJuegos;
+		return promedio;
+	}
+	
+	public float calcAnotacionesPorJuego(int anotacion, int juegosJugados) {
+		float anotacionPorJuego = anotacion/juegosJugados;
+		return anotacionPorJuego;
+	}
+	/*
+	public float calcRebotesPorJuego(int juegosJugados) {
+		float rpj = rebotes/juegosJugados;
+		return rpj;
+	}
+	public float calcAsistenciasPorJuego(int juegosJugados) {
+		float apj = asistencias/juegosJugados;
+		return apj;
+	}*/
+	
 }
