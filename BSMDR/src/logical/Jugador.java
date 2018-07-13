@@ -11,10 +11,11 @@ public class Jugador {
 	private float salarioAnual;
 	private String ligaProveniente;
 	private boolean lesionado;
-	ArrayList<Lesion> misLesiones;
+	private ArrayList<Lesion> misLesiones;
+	private Estadistica estadisticas;
 	
 	public Jugador(String nombre, String apellido, String iD, Calendar fechaNacimiento, float salarioAnual,
-			String ligaProveniente, boolean lesionado, ArrayList<Lesion> misLesiones) {
+			String ligaProveniente, boolean lesionado, Estadistica estadisticas) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -23,7 +24,7 @@ public class Jugador {
 		this.salarioAnual = salarioAnual;
 		this.ligaProveniente = ligaProveniente;
 		this.lesionado = lesionado;
-		this.misLesiones = misLesiones;
+		this.estadisticas = estadisticas;
 	}
 	public String getNombre() {
 		return nombre;
@@ -70,7 +71,23 @@ public class Jugador {
 	public ArrayList<Lesion> getMisLesiones() {
 		return misLesiones;
 	}
-	public void setMisLesiones(ArrayList<Lesion> misLesiones) {
-		this.misLesiones = misLesiones;
+	public void agregarLesion(Lesion lesion) {
+		if(lesion.isActiva()) {
+			this.lesionado = true;
+		}
+		this.misLesiones.add(lesion);
+	}
+	public void revisionEstado() {
+		for(Lesion lesion : misLesiones) {
+			if(lesion.getFechaRegreso() == Calendar.getInstance()) {
+				this.lesionado = false;
+			}
+		}
+	}
+	public Estadistica getEstadisticas() {
+		return estadisticas;
+	}
+	public void setEstadisticas(Estadistica estadisticas) {
+		this.estadisticas = estadisticas;
 	}
 }
