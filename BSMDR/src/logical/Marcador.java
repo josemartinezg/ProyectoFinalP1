@@ -6,10 +6,10 @@ public class Marcador {
 	private float tiempoDelCuarto;
 	private int cuartoActual;
 	
-	public Marcador(int puntajeVisitante, int puntajeLocal, float tiempoDelCuarto, int cuartoActual) {
+	public Marcador(float tiempoDelCuarto, int cuartoActual) {
 		super();
-		this.puntajeVisitante = puntajeVisitante;
-		this.puntajeLocal = puntajeLocal;
+		puntajeVisitante = 0;
+		puntajeLocal = 0;
 		this.tiempoDelCuarto = tiempoDelCuarto;
 		this.cuartoActual = cuartoActual;
 	}
@@ -36,5 +36,24 @@ public class Marcador {
 	}
 	public void setCuartoActual(int cuartoActual) {
 		this.cuartoActual = cuartoActual;
+	}
+	/*
+	 * Addición simple de puntos. 
+	 * Se sugiere configurar el KeyListener, para invocar el método con parámetros predeterminados.
+	 * Ej: if (key == KeyEvent.VK_ENTER){
+	 * "addPuntos(3, true)"
+	 * "addTiro(3, true)"}
+	 * */
+	public void addPuntos(int anotacion, boolean esLocal) {
+		if (esLocal == true) {
+			puntajeLocal += anotacion;
+		}else {
+			puntajeVisitante += anotacion;
+		}
+	}
+	
+	public void tiempoDeJuego() {
+		System.out.println("Inicio del juego");
+		new CountDown();
 	}
 }
