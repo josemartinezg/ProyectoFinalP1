@@ -1,19 +1,18 @@
 package logical;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class Jugador {
 	private String nombre; 
 	private String apellido;
 	private String iD;
-	private Calendar fechaNacimiento;
+	private FechaSimple fechaNacimiento;
 	private float salarioAnual;
 	private String ligaProveniente;
 	private boolean lesionado;
 	ArrayList<Lesion> misLesiones;
 	
-	public Jugador(String nombre, String apellido, String iD, Calendar fechaNacimiento, float salarioAnual,
+	public Jugador(String nombre, String apellido, String iD, FechaSimple fechaNacimiento, float salarioAnual,
 			String ligaProveniente, boolean lesionado, ArrayList<Lesion> misLesiones) {
 		super();
 		this.nombre = nombre;
@@ -43,10 +42,10 @@ public class Jugador {
 	public void setiD(String iD) {
 		this.iD = iD;
 	}
-	public Calendar getFechaNacimiento() {
+	public FechaSimple getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(Calendar fechaNacimiento) {
+	public void setFechaNacimiento(FechaSimple fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public float getSalarioAnual() {
