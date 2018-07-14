@@ -1,6 +1,5 @@
 package logical;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class Conferencia {
@@ -61,4 +60,5 @@ public class Conferencia {
 	public ArrayList<Juego> getJuegosDelDia() {
 		return this.getJuegos(new FechaSimple());
 	}
+}
 
